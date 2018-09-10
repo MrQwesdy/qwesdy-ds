@@ -1,12 +1,3 @@
-import discord
-from discord.ext import commands
-import asyncio
-import aiohttp
-
-TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.DngaxA.EWf6GuuNqGIOO5tbstxpz4qjDrQ'
-
-client = commands.Bot(command_prefix = '.')
-client.remove_command('help')
 
 minutes = 0
 hour = 0
@@ -16,58 +7,82 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
     print('Connected')
 
-@client.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
-
-@client.command(pass_context=True)
-async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
-
-
-
 # Testing
 
+@client.command(pass_context = True)
+async def clear(ctx, number=500):
+    number = int(number) #Converting the amount of messages to delete to an integer
+    counter = 0
+    async for x in client.logs_from(ctx.message.channel, limit = number):
+        if counter < number:
+            await client.delete_message(x)
+            counter += 1
+
+@client.command(pass_context=True)
+async def help(ctx):
+    channel = ctx.message.channel
+    embed = discord.Embed (
+        title = '__**Command List**__',
+        description = '** **',
+        colour = discord.Colour.blue()
+    )
+
+    embed.add_field(name=".help", value="Information about bot", inline=False)
+    embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
+    embed.add_field(name=".invite", value="Invite Link to Our Discord", inline=False)
+    embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
+    embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
+    embed.add_field(name=".dev", value="Bot Developer", inline=False)
+
+    await client.send_message(channel, embed=embed)
+
+# Admin
+
+@client.command(pass_context=True)
+async def admin(ctx):
+    channel = ctx.message.channel
+    embed = discord.Embed (
+        title = '__**Admin Commands**__',
+        description = '** **',
+        colour = discord.Colour.blue()
+    )
+
+    embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
+    embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
+    embed.add_field(name=".invite", value="Invite Link to Our Discord", inline=False)
+    embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
+    embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
+    embed.add_field(name=".dev", value="Bot Developer", inline=False)
+
+    await client.send_message(channel, embed=embed)
+
+# Admin
+
+@client.command()
+async def invite():
+    await client.say("Invite link » `https://discord.gg/gHq5uW5`")
+
+@client.command()
+async def ig():
+    await client.say("Qwesdy's IG » `@Qwesdy_`")
+
+@client.command()
+async def qwenty():
+    await client.say("Qwenty's Discord » `https://discord.gg/gmh8ay`")
+
+@client.command()
+async def dev():
+    await client.say("Bot Developer » `Qwesdy`")
 
 
-@client.event
-async def on_message(message):
-    if message.content.startswith('.help'):
-        embed = discord.Embed(title="__**Command List**__", description="", color=0x00ff00)
-        embed.add_field(name=".help", value="Information about bot", inline=False)
-        embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
-        embed.add_field(name=".invite", value="Invite Link to Our Discord", inline=False)
-        embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
-        embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
-        await client.send_message(message.channel, embed=embed)
+@client.command()
+async def msg():
+    await client.say('Test Message')
 
-    if message.content.startswith('.uptime'):
-        embed = discord.Embed(title="__**Uptime**__", description="", color=0x00ff00)
-        embed.add_field(name="Hours", value="{0}".format(hour, minutes, message.server), inline=False)
-        embed.add_field(name="Minutes", value="{1}".format(hour, minutes, message.server), inline=False)
-        embed.add_field(name="** **", value="** **", inline=False)
-        embed.add_field(name="in", value="{2}".format(hour, minutes, message.server), inline=False)
-        await client.send_message(message.channel, embed=embed)
-
-    if message.content.startswith('.invite'):
-        await client.send_message(message.channel, "Invite link » `https://discord.gg/gHq5uW5`")
-
-    if message.content.startswith('.ig'):
-        await client.send_message(message.channel, "Qwesdy's IG » `@Qwesdy_`")
-
-    if message.content.startswith('.qwenty'):
-        await client.send_message(message.channel, "Qwenty's Discord » `https://discord.gg/gmh8ay`")
-
-    if message.content.startswith('.dev'):
-        await client.send_message(message.channel, "Bot Developer » `Qwesdy`")
-
-    if message.content.startswith('.clear'):
-        tmp = await client.send_message(message.channel, 'Clearing messages')
-        async for msg in client.logs_from(message.channel):
-            await client.delete_message(msg)
+@client.command(pass_context=True)
+async def kick(ctx, user: discord.Member):
+    await client.say(" {} has been kicked".format(user.mention))
+    await client.kick(user)
 
 # Testing
 
@@ -90,17 +105,6 @@ async def on_member_join(member):
     role = discord.utils.get(member.server.roles, name='Neighbor')
     await client.add_roles(member, role)
 
-@client.command()
-async def msg():
-    embed = discord.Embed(
-        title = 'Information',
-        description = '',
-        colour = discord.Colour.red()
-    )
-    embed.set_image(url='https://cdn.discordapp.com/attachments/486513293238730763/487250206358896640/rainbow_line_gif.gif')
-    embed.add_field(name='ahojky', value='ahojky', inline=False)
-
-    await client.say(embed=embed)
 
 client.loop.create_task(uptime())
 client.run(TOKEN)
