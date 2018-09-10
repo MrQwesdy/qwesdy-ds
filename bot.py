@@ -1,3 +1,12 @@
+import discord
+from discord.ext import commands
+import asyncio
+import aiohttp
+
+client = commands.Bot(command_prefix = '.')
+client.remove_command('help')
+
+TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.Dngjqw.bPKFYK26L-UVOrzwLFKxZRok5rw'
 
 minutes = 0
 hour = 0
