@@ -60,7 +60,7 @@ async def on_message(message):
         await client.send_message(message.channel, "Qwenty's Discord » `https://discord.gg/gmh8ay`")
 
     if message.content.startswith('.dev'):
-        await client.send_message(message.channel, "Bot Developed by `Qwesdy`")
+        await client.send_message(message.channel, "Bot Developed by Qwesdy")
 
 # Testing
 
