@@ -88,10 +88,6 @@ async def dev():
 async def msg():
     await client.say('Test Message')
 
-@client.command(pass_context=True)
-async def kick(ctx, user: discord.Member):
-    await client.say(" {} has been kicked".format(user.mention))
-    await client.kick(user)
 
 # Testing
 
