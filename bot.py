@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import aiohttp
 
-TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.DnaHWA.Hv2eXu36OBnWowxe3F-IvuILnKY'
+TOKEN = 'NDg4MzMwMjYzNTQ2NDI5NDUw.DngYjA.RJmbYYCxm7YBgTsqHVNPJnQ-nlw'
 
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
@@ -26,6 +26,8 @@ async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
+
+
 
 # Testing
 
@@ -60,7 +62,12 @@ async def on_message(message):
         await client.send_message(message.channel, "Qwenty's Discord » `https://discord.gg/gmh8ay`")
 
     if message.content.startswith('.dev'):
-        await client.send_message(message.channel, "Bot Developed by Qwesdy")
+        await client.send_message(message.channel, "Bot Developer » `Qwesdy`")
+
+    if message.content.startswith('.clear'):
+        tmp = await client.send_message(message.channel, 'Clearing messages')
+        async for msg in client.logs_from(message.channel):
+            await client.delete_message(msg)
 
 # Testing
 
