@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import aiohttp
 
-TOKEN = 'NDg4MzMwMjYzNTQ2NDI5NDUw.DngYjA.RJmbYYCxm7YBgTsqHVNPJnQ-nlw'
+TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.DngaxA.EWf6GuuNqGIOO5tbstxpz4qjDrQ'
 
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
