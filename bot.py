@@ -58,11 +58,7 @@ async def admin(ctx):
     )
 
     embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
-    embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
-    embed.add_field(name=".invite", value="Invite Link to Our Discord", inline=False)
-    embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
-    embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
-    embed.add_field(name=".dev", value="Bot Developer", inline=False)
+    embed.add_field(name=".clear", value="Delete all messages in channel", inline=False)
 
     await client.send_message(channel, embed=embed)
 
