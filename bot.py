@@ -43,6 +43,7 @@ async def help(ctx):
     embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
     embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
     embed.add_field(name=".dev", value="Bot Developer", inline=False)
+    embed.add_field(name=".add", value="Add this bot to your own Server", inline=False)
 
     await client.send_message(channel, embed=embed)
 
@@ -79,6 +80,10 @@ async def qwenty():
 @client.command()
 async def dev():
     await client.say("Bot Developer » `Qwesdy`")
+    
+@client.command()
+async def add():
+    await client.say("Bot Developer » Link » `https://discordapp.com/oauth2/authorize?client_id=488236444268232716&permissions=8&scope=bot`")
 
 
 async def msg():
