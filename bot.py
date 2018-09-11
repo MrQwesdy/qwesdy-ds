@@ -57,8 +57,8 @@ async def admin(ctx):
         colour = discord.Colour.blue()
     )
 
-    embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
     embed.add_field(name=".clear", value="Delete all messages in channel", inline=False)
+    embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
 
     await client.send_message(channel, embed=embed)
 
