@@ -83,7 +83,7 @@ async def dev():
     
 @client.command()
 async def add():
-    await client.say("Bot Developer » Link » `https://discordapp.com/oauth2/authorize?client_id=488236444268232716&permissions=8&scope=bot`")
+    await client.say("Link » `https://discordapp.com/oauth2/authorize?client_id=488236444268232716&permissions=8&scope=bot`")
 
 
 async def msg():
