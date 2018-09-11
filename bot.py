@@ -84,26 +84,14 @@ async def dev():
     await client.say("Bot Developer » `Qwesdy`")
 
 
-@client.command()
 async def msg():
     await client.say('Test Message')
 
-
-# Testing
-
-async def uptime():
-    await client.wait_until_ready()
-    global minutes
-    minutes = 0
-    global hour
-    hour = 0
-    while not client.is_closed:
-        await asyncio.sleep(60)
-        minutes += 1
-        if minutes == 60:
-            minutes = 0
-            hour += 1
-
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, user: discord.Member):
+    await client.say(" {} has been kicked".format(user.mention))
+    await client.kick(user)
 
 @client.event
 async def on_member_join(member):
@@ -111,5 +99,4 @@ async def on_member_join(member):
     await client.add_roles(member, role)
 
 
-client.loop.create_task(uptime())
 client.run(TOKEN)
