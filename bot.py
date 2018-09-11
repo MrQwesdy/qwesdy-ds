@@ -38,6 +38,7 @@ async def help(ctx):
     )
 
     embed.add_field(name=".help", value="Information about bot", inline=False)
+    embed.add_field(name=".admin", value="Commands for Admin", inline=False)
     embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
     embed.add_field(name=".invite", value="Invite Link to Our Discord", inline=False)
     embed.add_field(name=".ig", value="Qwesdy's Instagram", inline=False)
