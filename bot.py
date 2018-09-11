@@ -19,6 +19,7 @@ async def on_ready():
 # Testing
 
 @client.command(pass_context = True)
+@commands.has_permissions(manage_messages=True)
 async def clear(ctx, number=500):
     number = int(number) #Converting the amount of messages to delete to an integer
     counter = 0
