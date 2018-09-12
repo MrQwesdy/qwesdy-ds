@@ -16,6 +16,17 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
     print('Connected')
 
+@bot.command()
+async def uptime(ctx):
+    """Displays how long the bot has been online for"""
+    second = time.time() - start_time
+    minute, second = divmod(second, 60)
+    hour, minute = divmod(minute, 60)
+    day, hour = divmod(hour, 24)
+    week, day = divmod(day, 7)
+    await ctx.send(Language.get("bot.uptime", ctx) % (week, day, hour, minute, second))
+    
+    
 # Testing
 
 @client.command(pass_context = True)
