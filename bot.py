@@ -58,9 +58,9 @@ async def help(ctx):
     embed = discord.Embed (
         title = '__**Command List**__',
         description = '** **',
-        colour = discord.Colour.blue()
     )
 
+    embed = discord.Embed(colour=ctx.message.author.top_role.colour)
     embed.add_field(name=".help", value="Information about bot", inline=False)
     embed.add_field(name=".admin", value="Commands for Admin", inline=False)
     embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
@@ -80,8 +80,8 @@ async def admin(ctx):
     embed = discord.Embed (
         title = '__**Admin Commands**__',
         description = '** **',
-        colour = discord.Colour.blue()
     )
+    embed = discord.Embed(colour=ctx.message.author.top_role.colour)
 
     embed.add_field(name=".clear", value="Delete all messages in channel", inline=False)
     embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
