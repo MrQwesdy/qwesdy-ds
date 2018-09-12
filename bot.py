@@ -44,13 +44,11 @@ class Uptime:
 
 @client.command(pass_context = True)
 @commands.has_permissions(manage_messages=True)
-async def clear(ctx, number=500):
+async def clear(ctx, number=50000):
     number = int(number) #Converting the amount of messages to delete to an integer
     counter = 0
     async for x in client.logs_from(ctx.message.channel, limit = number):
-        if counter < number:
-            await client.delete_message(x)
-            counter += 1
+        await client.delete_message(x)
 
 @client.command(pass_context=True)
 async def help(ctx):
