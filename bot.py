@@ -1,4 +1,4 @@
-import discord
+import discord, datetime, time
 from discord.ext import commands
 import asyncio
 import aiohttp
