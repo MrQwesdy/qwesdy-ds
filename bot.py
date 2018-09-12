@@ -8,14 +8,37 @@ client.remove_command('help')
 
 TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.Dngjqw.bPKFYK26L-UVOrzwLFKxZRok5rw'
 
+start_time = time.time()
+
 minutes = 0
 hour = 0
 
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
+    bot.add_cog(Uptime(bot))
     print('Connected')
 
+class Uptime:
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command(pass_context=True)
+    async def uptime(self, ctx):
+        current_time = time.time()
+        difference = int(round(current_time - start_time))
+        text = str(datetime.timedelta(seconds=difference))
+        embed = discord.Embed(colour=ctx.message.author.top_role.colour)
+        embed.add_field(name="Uptime", value=text)
+        embed.set_footer(text="Sponsored by altcointrain.com - Choo!!! Choo!!!")
+        try:
+            await self.bot.say(embed=embed)
+        except discord.HTTPException:
+            await self.bot.say("Current uptime: " + text)
+
+
+    
+    
 # Testing
 
 @client.command(pass_context = True)
