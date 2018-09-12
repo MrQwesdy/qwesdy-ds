@@ -99,7 +99,7 @@ async def ig():
 
 @client.command()
 async def qwenty():
-    await client.say("Qwenty's Discord » `https://discord.gg/gmh8ay`")
+    await client.say("Qwenty's Discord » `https://discordapp.com/invite/cFEfmNh`")
 
 @client.command()
 async def dev():
