@@ -8,8 +8,6 @@ client.remove_command('help')
 
 TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.Dngjqw.bPKFYK26L-UVOrzwLFKxZRok5rw'
 
-start_time = time.time()
-
 minutes = 0
 hour = 0
 
