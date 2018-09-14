@@ -13,6 +13,8 @@ TOKEN = 'NDg4MjM2NDQ0MjY4MjMyNzE2.Dngjqw.bPKFYK26L-UVOrzwLFKxZRok5rw'
 minutes = 0
 hour = 0
 
+players = {}
+
 @client.event
 async def on_ready():
     client.add_cog(Uptime(client))
@@ -145,6 +147,35 @@ async def kick(ctx, user: discord.Member):
     embed=discord.Embed(title="Kick Command", description="**{0}** has been kicked!".format(user, ctx.message.author), color=ctx.message.author.top_role.colour)
     await client.say(embed=embed)
     await client.kick(user)
+
+# Join Voice Channel Cmd
+
+@client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def join(ctx):
+   author = ctx.message.author
+   voice_channel = author.voice_channel
+   vc = await client.join_voice_channel(voice_channel)
+
+# Leave Channel Cmd
+
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def leave(ctx):
+    for x in client.voice_clients:
+        if(x.server == ctx.message.server):
+            return await x.disconnect()
+
+# Play Music Cmd
+
+@client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def yt(ctx, url):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+    players[server.id] = player
+    player.start()
 
 # Other
 
