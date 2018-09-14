@@ -2,7 +2,6 @@ import discord, datetime, time
 from discord.ext import commands
 import asyncio
 import aiohttp
-import youtube_dl
 import os
 import random
 
