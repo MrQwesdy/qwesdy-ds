@@ -68,12 +68,7 @@ async def news(ctx):
 
 @client.command(pass_context=True)
 async def help(ctx):
-    channel = ctx.message.channel
-    embed = discord.Embed (
-        title = '__**Command List**__',
-        description = '** **',
-    )
-    embed = discord.Embed(colour=ctx.message.author.top_role.colour)
+    embed = discord.Embed(title="__**List of Player Commands**__", description="", colour=ctx.message.author.top_role.colour)
     embed.add_field(name=".help", value="Information about bot", inline=False)
     embed.add_field(name=".admin", value="Commands for Admin", inline=False)
     embed.add_field(name=".uptime", value="Shows you uptime of Bot", inline=False)
@@ -82,26 +77,18 @@ async def help(ctx):
     embed.add_field(name=".qwenty", value="Qwenty's Discord", inline=False)
     embed.add_field(name=".dev", value="Bot Developer", inline=False)
     embed.add_field(name=".add", value="Add this bot to your own Server", inline=False)
-
-    await client.send_message(channel, embed=embed)
+    await client.say(embed=embed)
 
 # Admin
 
 @client.command(pass_context=True)
 async def admin(ctx):
-    channel = ctx.message.channel
-    embed = discord.Embed (
-        title = '__**Admin Commands**__',
-        description = '** **',
-    )
-    embed = discord.Embed(colour=ctx.message.author.top_role.colour)
+    embed = discord.Embed(title="__**List of Admin Commands**__", description="", colour=ctx.message.author.top_role.colour)
     embed.add_field(name=".clear", value="Delete all messages in channel", inline=False)
     embed.add_field(name=".ban", value="Ban user from Discord", inline=False)
     embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
     embed.add_field(name=".mute", value="Mute user on Discord", inline=False)
-
-
-    await client.send_message(channel, embed=embed)
+    await client.say(embed=embed)
 
 # Admin
 
