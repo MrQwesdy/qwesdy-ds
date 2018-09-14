@@ -51,13 +51,28 @@ async def clear(ctx, number=50000):
         await client.delete_message(x)
 
 @client.command(pass_context=True)
+async def news(ctx):
+    channel = ctx.message.channel
+    embed = discord.Embed (
+        title = '__**Command List**__',
+        description = '** **',
+    )
+    embed = discord.Embed(colour=ctx.message.author.top_role.colour)
+    embed.add_field(name="Update v1.0", value="** **", inline=False)
+    embed.add_field(name="• Added .ban", value="** **", inline=False)
+    embed.add_field(name="• Added .mute", value="** **", inline=False)
+    embed.add_field(name="• Added .kick", value="** **", inline=False)
+
+    await client.send_message(channel, embed=embed)
+
+
+@client.command(pass_context=True)
 async def help(ctx):
     channel = ctx.message.channel
     embed = discord.Embed (
         title = '__**Command List**__',
         description = '** **',
     )
-
     embed = discord.Embed(colour=ctx.message.author.top_role.colour)
     embed.add_field(name=".help", value="Information about bot", inline=False)
     embed.add_field(name=".admin", value="Commands for Admin", inline=False)
@@ -80,9 +95,11 @@ async def admin(ctx):
         description = '** **',
     )
     embed = discord.Embed(colour=ctx.message.author.top_role.colour)
-
     embed.add_field(name=".clear", value="Delete all messages in channel", inline=False)
+    embed.add_field(name=".ban", value="Ban user from Discord", inline=False)
     embed.add_field(name=".kick", value="Kick user from Discord", inline=False)
+    embed.add_field(name=".mute", value="Mute user on Discord", inline=False)
+
 
     await client.send_message(channel, embed=embed)
 
@@ -113,10 +130,36 @@ async def msg():
     await client.say('Test Message')
 
 @client.command(pass_context = True)
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, user: discord.Member):
+    embed=discord.Embed(title="Ban Command", description="**{0}** has been banned!".format(user, ctx.message.author), color=ctx.message.author.top_role.colour)
+    await client.say(embed=embed)
+    await client.ban(user)
+
+# Mute Cmd
+
+@client.command(pass_context = True)
+@commands.has_permissions(ban_members=True)
+async def mute(ctx, member: discord.Member):
+     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+        role = discord.utils.get(member.server.roles, name='Muted')
+        await client.add_roles(member, role)
+        embed=discord.Embed(title="Mute Command", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=ctx.message.author.top_role.colour)
+        await client.say(embed=embed)
+     else:
+        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
+        await client.say(embed=embed)
+
+# Kick Cmd
+
+@client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member):
-    await client.say(" {} has been kicked".format(user.mention))
+    embed=discord.Embed(title="Kick Command", description="**{0}** has been kicked!".format(user, ctx.message.author), color=ctx.message.author.top_role.colour)
+    await client.say(embed=embed)
     await client.kick(user)
+
+# Other
 
 @client.event
 async def on_member_join(member):
