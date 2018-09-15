@@ -154,7 +154,7 @@ async def ban(ctx, user: discord.Member):
 @commands.has_permissions(ban_members=True)
 async def mute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-        role = discord.utils.get(member.server.roles, name='Muted')
+        role = discord.utils.get(member.server.roles, name='Mute')
         await client.add_roles(member, role)
         embed=discord.Embed(title="Mute Command", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=ctx.message.author.top_role.colour)
         await client.say(embed=embed)
