@@ -108,7 +108,7 @@ async def fun(ctx):
 
 @client.command()
 async def invite():
-    await client.say("Invite link » `https://discord.gg/gHq5uW5`")
+    await client.say("Invite link » `https://discord.gg/BU3vA28`")
 
 # Instagram Cmd
 
