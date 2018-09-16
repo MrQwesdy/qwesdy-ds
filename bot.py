@@ -229,7 +229,7 @@ async def bagr(ctx):
 
 @client.event
 async def on_member_join(member):
-    role = discord.utils.get(member.server.roles, name='Neighbor')
+    role = discord.utils.get(member.server.roles, name='Member')
     await client.add_roles(member, role)
 
 client.run(TOKEN)
