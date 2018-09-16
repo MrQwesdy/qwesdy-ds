@@ -20,7 +20,7 @@ players = {}
 @client.event
 async def on_ready():
     client.add_cog(Uptime(client))
-    await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
+    await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=2))
     print('Connected')
 
 # Uptime Cmd
