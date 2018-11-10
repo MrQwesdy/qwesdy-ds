@@ -27,9 +27,9 @@ async def on_ready():
 
 async def status_task():
     while True:
-        await client.send_message(client.get_channel('495608748488785933'), 'Qwenty je g0d')
+        await client.send_message(client.get_channel('495608748488785933'), 'Qwentyho Shop » https://selly.gg/@Qwenty__')
         await asyncio.sleep(1800)
-        await client.send_message(client.get_channel('495608748488785933'), 'Qwenty je g0d')
+        await client.send_message(client.get_channel('495608748488785933'), 'Qwentyho Shop » https://selly.gg/@Qwenty__')
         await asyncio.sleep(1800)
 
 # Clear Cmd
