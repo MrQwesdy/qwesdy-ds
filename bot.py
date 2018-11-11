@@ -32,6 +32,26 @@ async def status_task():
         await client.send_message(client.get_channel('495608748488785933'), 'Qwentyho Shop » https://selly.gg/@Qwenty__')
         await asyncio.sleep(1800)
 
+# Info Cmd
+
+@client.command(pass_context=True)
+async def info(ctx):
+    embed = discord.Embed(title="__**List of Player Commands**__", description="", colour=ctx.message.author.top_role.colour)
+    embed.add_field(name="Qwenty's Bot Information", value="** **", inline=False)
+    embed.add_field(name=".clear (amount) - Clears the chosen amount of messages in current channel.", value="** **", inline=False)
+    embed.add_field(name=".mute (@User) - Gives Mute role to an chosen User.", value="** **", inline=False)
+    embed.add_field(name=".unmute (@User) - Unmutes already muted chosen User.", value="** **", inline=False)
+    embed.add_field(name=".kick (@User) - Kicks chosen User from the Server.", value="** **", inline=False)
+    embed.add_field(name=".ban (@User) - Permanently IP Bans an chosen User from the server", value="** **", inline=False)
+    embed.add_field(name="To unban someone you have to do it manualy through Server Settings!", value="** **", inline=False)
+    embed.add_field(name="", value="** **", inline=False)
+    embed.add_field(name="Found by Qwenty.#7942", value="** **", inline=False)
+    embed.add_field(name="Developed by Qwesdy#9217", value="** **", inline=False)
+    embed.add_field(name="", value="** **", inline=False)
+    embed.add_field(name="Made with :heart:", value="** **", inline=False)
+    await client.say(embed=embed)
+        
+        
 # Clear Cmd
 
 @client.command(pass_context = True)
