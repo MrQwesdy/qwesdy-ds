@@ -134,8 +134,8 @@ async def leave(ctx):
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
 
-@client.command(pass=context=True)
-asnyc def play(ctx):
+@client.command(pass_context=True)
+async def play(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     player = await voice_client.create_ytdl_player(url)
