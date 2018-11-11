@@ -44,10 +44,10 @@ async def info(ctx):
     embed.add_field(name=".kick (@User) - Kicks chosen User from the Server.", value="** **", inline=False)
     embed.add_field(name=".ban (@User) - Permanently IP Bans an chosen User from the server", value="** **", inline=False)
     embed.add_field(name="To unban someone you have to do it manualy through Server Settings!", value="** **", inline=False)
-    embed.add_field(name="", value="** **", inline=False)
+    embed.add_field(name="** **", value="** **", inline=False)
     embed.add_field(name="Found by Qwenty.#7942", value="** **", inline=False)
     embed.add_field(name="Developed by Qwesdy#9217", value="** **", inline=False)
-    embed.add_field(name="", value="** **", inline=False)
+    embed.add_field(name="** **", value="** **", inline=False)
     embed.add_field(name="Made with :heart:", value="** **", inline=False)
     await client.say(embed=embed)
         
