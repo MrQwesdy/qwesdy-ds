@@ -35,7 +35,7 @@ async def status_task():
 # Clear Cmd
 
 @client.command(pass_context = True)
-async def clear(ctx, number=50000):
+async def clear(ctx, amount=100):
     if ctx.message.author.server_permissions.ban_members or ctx.message.author.id == '194151340090327041':
         channel = ctx.message.channel
         messages = []
