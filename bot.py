@@ -36,8 +36,8 @@ async def status_task():
 
 @client.command(pass_context=True)
 async def info(ctx):
-    embed = discord.Embed(title="__**List of Player Commands**__", description="", colour=ctx.message.author.top_role.colour)
-    embed.add_field(name="Qwenty's Bot Information", value="** **", inline=False)
+    embed = discord.Embed(title="Qwenty's Bot Information", description="", colour=ctx.message.author.top_role.colour)
+    embed.add_field(name="Commands:", value="** **", inline=False)
     embed.add_field(name=".clear (amount) - Clears the chosen amount of messages in current channel.", value="** **", inline=False)
     embed.add_field(name=".mute (@User) - Gives Mute role to an chosen User.", value="** **", inline=False)
     embed.add_field(name=".unmute (@User) - Unmutes already muted chosen User.", value="** **", inline=False)
