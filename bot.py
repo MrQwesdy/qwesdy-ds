@@ -66,7 +66,9 @@ async def clear(ctx, amount=100):
         await client.delete_messages(messages)
         await client.say('Messages deleted' + ' ' + '(' + str(amount) + ')')
         await asyncio.sleep(3)
-        await client.say('.clear 2')
+        async for bagr in client.logs_from(channel, limit=int(amount) + 1):
+            messages.append(bagr)
+        await client.delete_message(bagr)
 
 
 # Ban Cmd
