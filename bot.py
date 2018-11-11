@@ -4,6 +4,7 @@ import asyncio
 import aiohttp
 import os
 import random
+import youtube_dl
 
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
@@ -113,6 +114,26 @@ async def unmute(ctx, member: discord.Member):
         embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
         await client.say(embed=embed)
 
+# Audio
+
+@client.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+
+@client.command(pass_context=True)
+async def leave(ctx):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
+
+@client.command(pass_context=True)
+async def play(ctx):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+    players[server.id] = player
+    player.start()
 
 # Auto role
 
