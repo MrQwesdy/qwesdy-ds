@@ -19,18 +19,19 @@ players = {}
 
 @client.event
 async def on_ready():
-    client.loop.create_task(status_task())
+    #client.loop.create_task(status_task())
     await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
     print('Connected')
+    print('Developed by Qwesdy')
 
 # Send Shop Message
 
-async def status_task():
-    while True:
-        await client.send_message(client.get_channel('495608748488785933'), 'Qwentyho Shop » https://selly.gg/@Qwenty__')
-        await asyncio.sleep(1800)
-        await client.send_message(client.get_channel('495608748488785933'), 'Qwentyho Shop » https://selly.gg/@Qwenty__')
-        await asyncio.sleep(1800)
+#async def status_task():
+#    while True:
+#        await client.send_message(client.get_channel('495608748488785933'), 'Qwenty je g0d')
+#        await asyncio.sleep(1800)
+#        await client.send_message(client.get_channel('495608748488785933'), 'Qwenty je g0d')
+#        await asyncio.sleep(1800)
 
 # Info Cmd
 
