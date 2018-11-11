@@ -59,15 +59,12 @@ async def clear(ctx, amount=100):
     if ctx.message.author.server_permissions.ban_members or ctx.message.author.id == '194151340090327041':
         channel = ctx.message.channel
         messages = []
-        channel = ctx.message.channel
-        bagr = 1
         async for message in client.logs_from(channel, limit=int(amount) + 1):
             messages.append(message)
         await client.delete_messages(messages)
-        await client.say('Messages deleted' + ' ' + '(' + str(amount) + ')')
+        bagr = await client.say('Messages deleted' + ' ' + '(' + str(amount) + ')')
         await asyncio.sleep(3)
-        async for bagr in client.logs_from(channel, limit=int(amount) + 1):
-            messages.append(bagr)
+
         await client.delete_message(bagr)
 
 
