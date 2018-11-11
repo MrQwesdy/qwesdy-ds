@@ -37,10 +37,18 @@ async def status_task():
 @client.command(pass_context = True)
 async def clear(ctx, number=50000):
     if ctx.message.author.server_permissions.ban_members or ctx.message.author.id == '194151340090327041':
-        number = int(number) #Converting the amount of messages to delete to an integer
-        counter = 0
-        async for x in client.logs_from(ctx.message.channel, limit = number):
-            await client.delete_message(x)
+        channel = ctx.message.channel
+        messages = []
+        channel = ctx.message.channel
+        bagr = 1
+        async for message in client.logs_from(channel, limit=int(amount) + 1):
+            messages.append(message)
+        await client.delete_messages(messages)
+        await client.say('Messages deleted')
+        await asyncio.sleep(3)
+        async for bagr in client.logs_from(channel, limit=int(amount) + 1):
+            messages.append(bagr)
+        await client.delete_message(bagr)
 
 # Ban Cmd
 
