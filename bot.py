@@ -20,7 +20,7 @@ players = {}
 @client.event
 async def on_ready():
     #client.loop.create_task(status_task())
-    await client.change_presence(game=discord.Game(name='.help | By Qwesdy',type=3))
+    await client.change_presence(game=discord.Game(name='.info | ♥',type=2))
     print('Connected')
     print('Developed by Qwesdy')
 
