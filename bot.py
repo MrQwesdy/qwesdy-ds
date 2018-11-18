@@ -57,7 +57,6 @@ async def info(ctx, user: discord.Member):
 # Load Cmd
 
 @client.command()
-@has_permissions(manage_roles=True, ban_members=True)
 async def load(extension):
     try:
         client.load_extension(extension)
@@ -69,7 +68,6 @@ async def load(extension):
 # Unload Cmd
 
 @client.command()
-@has_permissions(manage_roles=True, ban_members=True)
 async def unload(extension):
     try:
         client.unload_extension(extension)
